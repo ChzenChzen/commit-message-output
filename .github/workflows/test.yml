@@ -11,6 +11,7 @@ jobs:
       - name: run github action
         uses: chzenchzen/commit-message-output@main
         id: test-run
+
       - name: debug output
         run: echo "${{ steps.test-run.outputs.tag }}"
 
