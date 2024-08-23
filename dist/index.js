@@ -31097,7 +31097,7 @@ const github = __nccwpck_require__(6557);
 try {
     const defaultValue = core.getInput('default');
     const commitMessage = github.context.payload.commits[0].message
-    const tagRegex = /--docker-image-tag=([\w.-]+)/;
+    const tagRegex = /--tag=([\w.-]+)/;
     const match = commitMessage.match(tagRegex);
     const dockerImageTag = match ? match[1] : defaultValue;
 
