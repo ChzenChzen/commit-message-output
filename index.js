@@ -3,9 +3,16 @@ const github = require('@actions/github');
 
 try {
     const defaultValue = core.getInput('default');
-    const commitMessage = process.env.COMMIT_MESSAGE
-    console.log(commitMessage);
-    console.log(github.context)
+    core.debug(`SHA: ${github.context.sha}`);
+    core.debug(`Ref: ${github.context.ref}`);
+    core.debug(`Job: ${github.context.job}`);
+    core.debug(`Actor: ${github.context.actor}`);
+    core.debug(`Action: ${github.context.action}`);
+    core.debug(`API URL: ${github.context.apiUrl}`);
+    core.debug(`Event Name: ${github.context.eventName}`);
+    core.debug(`GraphQL URL: ${github.context.graphqlUrl}`);
+    core.debug(`Workflow: ${github.context.workflow}`);
+    console.debug(`Payload: ${JSON.stringify(github.context.payload, null, 2)}`);
     // core.setOutput("tag", commitMessage);
 } catch (error) {
     core.setFailed(error.message);
