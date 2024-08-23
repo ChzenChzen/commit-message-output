@@ -31096,10 +31096,9 @@ const github = __nccwpck_require__(6557);
 
 try {
     const defaultValue = core.getInput('default');
-    const commitMessage = github.context.payload.head_commit.message;
+    const commitMessage = process.env.COMMIT_MESSAGE
     console.log(commitMessage);
     // core.setOutput("tag", commitMessage);
-    // Get the JSON webhook payload for the event that triggered the workflow
 } catch (error) {
     core.setFailed(error.message);
 }
