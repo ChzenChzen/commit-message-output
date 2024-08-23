@@ -31106,7 +31106,8 @@ try {
     core.debug(`GraphQL URL: ${github.context.graphqlUrl}`);
     core.debug(`Workflow: ${github.context.workflow}`);
     console.debug(`Payload: ${JSON.stringify(github.context.payload, null, 2)}`);
-    // core.setOutput("tag", commitMessage);
+    let commitMessage = github.context.payload.commits[0].message
+    core.setOutput("tag", commitMessage);
 } catch (error) {
     core.setFailed(error.message);
 }
