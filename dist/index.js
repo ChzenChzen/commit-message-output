@@ -31098,6 +31098,7 @@ try {
     const defaultValue = core.getInput('default');
     const commitMessage = process.env.COMMIT_MESSAGE
     console.log(commitMessage);
+    console.log(github.context)
     // core.setOutput("tag", commitMessage);
 } catch (error) {
     core.setFailed(error.message);

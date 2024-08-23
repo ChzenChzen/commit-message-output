@@ -1,0 +1,17 @@
+name: Test github action
+on:
+  push:
+    branches:
+      - main
+jobs:
+  test:
+    name: Test github action
+    runs-on: ubuntu-22.04
+    steps:
+      - name: run github action
+        uses: chzenchzen/commit-message-output@v1.0.7
+        id: test-run
+      - name: debug output
+        run: echo "${{ steps.test-run.outputs.tag }}"
+
+
