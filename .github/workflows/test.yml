@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: run github action
-        uses: chzenchzen/commit-message-output@${{ github.sha }}
+        uses: chzenchzen/commit-message-output@main
         id: test-run
       - name: debug output
         run: echo "${{ steps.test-run.outputs.tag }}"
