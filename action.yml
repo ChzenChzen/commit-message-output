@@ -1,13 +1,13 @@
-name: 'Hello World'
-description: 'Greet someone and record the time'
+name: Commit message output
+description: 'Parsing commit message and extract values into output'
 inputs:
-  who-to-greet: # id of input
-    description: 'Who to greet'
+  default:
+    description: "Default value if commit message doesn't contain proper values"
     required: true
-    default: 'World'
+    default: 'latest'
 outputs:
-  time: # id of output
-    description: 'The time we greeted you'
+  tag:
+    description: 'The parsed tag'
 runs:
   using: 'node20'
   main: 'dist/index.js'
