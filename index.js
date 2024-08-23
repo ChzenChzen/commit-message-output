@@ -3,7 +3,7 @@ const github = require('@actions/github');
 
 try {
     const defaultValue = core.getInput('default');
-    const commitMessage = github.context.payload.head_commit.message;
+    const commitMessage = process.env.COMMIT_MESSAGE
     console.log(commitMessage);
 
     // core.setOutput("tag", commitMessage);
