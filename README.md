@@ -41,7 +41,7 @@ jobs:
         uses: chzenchzen/commit-message-output@main
         id: test-run
         with:
-          default: 'latest'
+          default: 'some-default-value'
         
       - name: Debug output
         run: echo "${{ steps.test-run.outputs.tag }}"
