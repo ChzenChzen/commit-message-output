@@ -6,11 +6,18 @@ try {
     const defaultValue = core.getInput('default');
     console.debug('Default value retrieved: ', defaultValue);
 
-    // Retrieve the commit message from the payload
-    if (!github.context.payload.commits || github.context.payload.commits.length === 0) {
+    // Check if commits array is present in the payload
+    if (!github.context.payload.commits) {
         throw new Error('No commits found in the payload.');
     }
-    const commitMessage = github.context.payload.commits[0].message;
+
+    const commits = github.context.payload.commits;
+    if (commits.length === 0) {
+        throw new Error('Commits array is empty.');
+    }
+
+    // Retrieve the commit message from the first commit in the array
+    const commitMessage = commits[0].message;
     console.debug('Commit message retrieved: ', commitMessage);
 
     // Define the regex to match the tag in the commit message
@@ -25,7 +32,7 @@ try {
     // Set the output tag
     core.setOutput("tag", dockerImageTag);
 } catch (error) {
-    // Log the error and fail the action
-    console.error('An error occurred:', error);
+    // Log the error details
+    console.error('An error occurred:', error.message);
     core.setFailed(error.message);
 }
