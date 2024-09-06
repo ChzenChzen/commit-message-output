@@ -8,12 +8,16 @@ try {
 
     // Check if commits array is present in the payload
     if (!github.context.payload.commits) {
-        throw new Error('No commits found in the payload.');
+        console.debug('No commits found in the payload. Return default');
+        core.setOutput("tag", defaultValue);
+        return;
     }
 
     const commits = github.context.payload.commits;
     if (commits.length === 0) {
-        throw new Error('Commits array is empty.');
+        console.debug('Commits array is empty. Return default');
+        core.setOutput("tag", defaultValue);
+        return;
     }
 
     // Retrieve the commit message from the first commit in the array
